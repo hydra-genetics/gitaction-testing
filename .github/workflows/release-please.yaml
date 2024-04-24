@@ -15,6 +15,7 @@ jobs:
           release-type: python
           package-name: hydra-genetics
           default-branch: main
+          token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
       - uses: actions/checkout@v2
         if: ${{ steps.release.outputs.release_created }}
