@@ -3,21 +3,25 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+  pull-requests: write
+
 name: release-please
 
 jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
-      - uses: GoogleCloudPlatform/release-please-action@v2
+      - uses: google-github-actions/release-please-action@v4
         id: release
         with:
-          release-type: python
-          package-name: hydra-genetics
-          default-branch: main
           token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+          release-type: python
+          package-name: test
+          default-branch: main
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         if: ${{ steps.release.outputs.release_created }}
         with:
           fetch-depth: 0
@@ -28,3 +32,11 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Build package
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          python3 -c "print('TEST')"
+      - name: Publish to PyPI
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          python3 -c "print('TEST3')"
