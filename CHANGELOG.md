@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/hydra-genetics/gitaction-testing/compare/v0.1.0...v0.2.0) (2024-04-25)
+
+
+### Features
+
+* update ci ([1756629](https://github.com/hydra-genetics/gitaction-testing/commit/17566291262074bae9fd4759f35839a1437d95fd))
+
 ## 0.1.0 (2024-04-25)
 
 
